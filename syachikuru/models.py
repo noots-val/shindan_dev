@@ -3,6 +3,7 @@ from django.db import models
 
 class Question(models.Model):
     question_sentence = models.TextField()
+    characteristic = models.CharField(max_length=255)
 
     def __str__(self):
         return str(self.pk)
@@ -34,6 +35,7 @@ class Choice(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_number = models.CharField(max_length=255)
     choice_sentence = models.TextField()
+    point = models.IntegerField()
 
     def __str__(self):
         return str(self.pk)
