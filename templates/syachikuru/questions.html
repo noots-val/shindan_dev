@@ -1,1 +1,26 @@
-<p>Questions</p>
+{% extends 'syachikuru/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>社畜る？×ニートる？</title>
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="社畜る？×ニートる？ 気軽に出来る性格診断サイト"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="診断したんだん">
+<meta property="og:description" content="社畜る？×ニートる？ 気軽に出来る性格診断サイト"/>
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block contents %}
+質問画面
+<a href="{% url 'index' %}">TOP</a>
+<a href="{% url 'syachikuru:questions' %}">QUESTIONS</a>
+<a href="{% url 'syachikuru:result' %}">RESULT</a>
+
+{% endblock %}

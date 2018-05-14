@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load static %}
+
+<head>
+    <meta charset="utf-8"/>
+
+    {% block title %}{% endblock %}
+    {% block description %}{% endblock %}
+
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/png" href="{% static 'common/img/shindan_logo.png'%}">
+
+    {% block ogp %}{% endblock %}
+    <meta property="og:type" content="website"/>
+    <!--<meta property="og:url" content="http://noots-val.com/official_site/index/"/>-->
+    <!--<meta property="og:image" content="http://noots-val.com/static/official_site/img/Noots.png"/>-->
+
+    <!--<meta property="fb:app_id" content=""/>-->
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@Noots_Val"/>
+    <meta name="twitter:creator" content="@Noots_Val"/>
+
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+<div class="container">
+
+
+    <div class="contents">
+        {% block contents %}{% endblock %}
+    </div>
+
+</div>
+</body>
+</html>
