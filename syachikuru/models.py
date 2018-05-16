@@ -1,9 +1,18 @@
 from django.db import models
 
 
+class Characteristic(models.Model):
+    question_sentence = models.TextField()
+    description = models.CharField(maxlength=255)
+
+    def __str__(self):
+        return str(self.pk)
+
+
 class Question(models.Model):
     question_sentence = models.TextField()
     characteristic = models.CharField(max_length=255)
+    characteristic_id = models.ForeignKey(Characteristic, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.pk)
