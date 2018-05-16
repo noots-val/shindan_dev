@@ -9,7 +9,7 @@ class Question(models.Model):
         return str(self.pk)
 
 
- class Result(models.Model):
+class Result(models.Model):
     level = models.IntegerField()
     type = models.CharField(max_length=255)
     img_url1 = models.URLField(null=True)
