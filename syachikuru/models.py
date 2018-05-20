@@ -1,8 +1,16 @@
 from django.db import models
 
+"""
+社畜る関連のテーブルを定義。
+
+修正する際には、以下のファイルも訂正すること
+1. 社畜るER図.a5er
+2. 社畜るテーブル定義書.xlsx（ツールで出力可能）
+"""
+
 
 class Characteristic(models.Model):
-    characteristic_type = models.CharField(maxlength=255)
+    characteristic_type = models.CharField(max_length=255)
     description = models.TextField()
 
     def __str__(self):
@@ -11,7 +19,7 @@ class Characteristic(models.Model):
 
 class Question(models.Model):
     question_sentence = models.TextField()
-    characteristic_id = models.ForeignKey(Characteristic, on_delete=models.CASCADE)
+    characteristic = models.ForeignKey(Characteristic, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.pk)
@@ -29,7 +37,7 @@ class Result(models.Model):
 
 
 class Candidate(models.Model):
-    result_id = models.ForeignKey(Result, on_delete=models.CASCADE)
+    result = models.ForeignKey(Result, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, null=True)
     sex = models.CharField(max_length=255, null=True)
     age = models.IntegerField(null=True)
@@ -40,7 +48,7 @@ class Candidate(models.Model):
 
 
 class Choice(models.Model):
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_number = models.CharField(max_length=255)
     choice_sentence = models.TextField()
     point = models.IntegerField()
@@ -50,8 +58,8 @@ class Choice(models.Model):
 
 
 class Answer(models.Model):
-    candidate_id = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    choice_id = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.pk)
