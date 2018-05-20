@@ -3,7 +3,8 @@ from django.contrib import admin
 
 
 class AppAdmin(admin.ModelAdmin):
-    fields = ["id", "category", "title", "logo", "summary"]
+    list_display = ["id", "category", "title", "logo", "summary"]
+    ordering = ("id",)
 
 
 admin.site.register(App, AppAdmin)
