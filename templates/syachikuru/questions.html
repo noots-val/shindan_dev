@@ -18,9 +18,18 @@
 {% endblock %}
 
 {% block contents %}
-質問画面
+質問画面<br>
 <a href="{% url 'index' %}">TOP</a>
 <a href="{% url 'syachikuru:questions' %}">QUESTIONS</a>
-<a href="{% url 'syachikuru:result' %}">RESULT</a>
+<a href="{% url 'syachikuru:result' %}">RESULT</a><br>
+
+{% for display_question in display_question_list %}
+<hr>
+    質問番号：{{ display_question.question_id }}<br>
+    質問文：{{ display_question.question_sentence }}<br>
+    {% for choice_sentence in display_question.choice_sentences %}
+        {{ forloop.counter }}. {{choice_sentence}}<br>
+    {% endfor %}
+{% endfor %}
 
 {% endblock %}
