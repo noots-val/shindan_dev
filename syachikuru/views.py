@@ -1,5 +1,7 @@
-from .models import Question, Choice
+from .models import Question, Choice, Characteristic
 from django.views.generic import ListView
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 class QuestionsView(ListView):
@@ -39,3 +41,19 @@ class QuestionsView(ListView):
 class ResultView(ListView):
     model = Question
     template_name = 'syachikuru/result.html'
+
+    def characteristic_type_list(self):
+        answer_list = [3, 5, 5, 5, 5,   # POSTデータの代用
+                       5, 5, 5, 5, 5,
+                       5, 5, 5, 5, 5
+                       ]
+        characteristic_list = Question.objects.values_list('characteristic', flat=True)
+        characteristic_type = Characteristic.objects.values_list('characteristic_type', flat=True)
+        characteristic_type_list = []  # characteristic_typeの集計用の変数
+
+        for t in answer_list:
+            for s in characteristic_type:
+                if characteristic_list[t] == s:
+                    characteristic_type_list[s] += answer_list[t]
+
+        return HttpResponseRedirect(reverse('syachikuru:result'))
