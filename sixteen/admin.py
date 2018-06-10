@@ -61,7 +61,7 @@ class AnswerAdmin(admin.ModelAdmin):
 
 
 class AnimeAdmin(admin.ModelAdmin):
-    list_display = ("id", "title", "character", "type_id")
+    list_display = ("id", "title", "character_name", "type_id")
     ordering = ("id",)
 
 
