@@ -42,18 +42,18 @@ class ResultView(ListView):
     model = Question
     template_name = 'syachikuru/result.html'
 
-    def characteristic_type_list(self):
-        answer_list = [3, 5, 5, 5, 5,   # POSTデータの代用
-                       5, 5, 5, 5, 5,
-                       5, 5, 5, 5, 5
-                       ]
-        characteristic_list = Question.objects.values_list('characteristic', flat=True)
-        characteristic_type = Characteristic.objects.values_list('characteristic_type', flat=True)
-        characteristic_type_list = []  # characteristic_typeの集計用の変数
+    def count_characteristic_type(self):
+        answers = [3, 5, 5, 5, 5,   # POSTデータの代用
+                   5, 5, 5, 5, 5,
+                   5, 5, 5, 5, 5
+                   ]
+        characteristics = Question.objects.values_list('characteristic', flat=True)
+        characteristic_types = Characteristic.objects.values_list('characteristic_type', flat=True)
+        characteristic_type_points = []  # characteristic_typeの集計用の変数
 
-        for t in answer_list:
-            for s in characteristic_type:
-                if characteristic_list[t] == s:
-                    characteristic_type_list[s] += answer_list[t]
+        for answer in answers:
+            for characteristic_type in characteristic_types:
+                if characteristics[answer] == characteristic_type:
+                    characteristic_type_points[characteristic_type] += answers[answer]
 
         return HttpResponseRedirect(reverse('syachikuru:result'))
