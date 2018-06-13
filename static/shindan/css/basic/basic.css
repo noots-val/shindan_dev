@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Yasashisa";
+  src: url(../../font/07やさしさゴシック.ttf);
+}
+
+html {
+  font-size: 10px;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+}
+
+body {
+  color: #444444;
+  font-size: 1.6rem;
+  line-height: 1.7rem;
+}

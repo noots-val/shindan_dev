@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.header {
+  display: flex;
+  background-color: #ffffff;
+  border-bottom: solid 2px #cccccc;
+}
+
+.header a {
+  display: block;
+  width: fit-content;
+  height: 100%;
+}

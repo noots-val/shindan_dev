@@ -8,8 +8,8 @@
     {% block title %}{% endblock %}
     {% block description %}{% endblock %}
 
-    <meta name="viewport" content="width=device-width"/>
-    <link rel="icon" type="image/png" href="{% static 'common/img/shindan_logo.png'%}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static 'shindan/img/shindan_logo.png'%}">
 
     {% block ogp %}{% endblock %}
     <meta property="og:type" content="website"/>
@@ -22,17 +22,43 @@
     <meta name="twitter:site" content="@Noots_Val"/>
     <meta name="twitter:creator" content="@Noots_Val"/>
 
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/basic/reset.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/basic/basic.css'%}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/atoms/label.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/atoms/form.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/atoms/button.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/atoms/list.css'%}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/molecules/logo.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/molecules/box.css'%}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/header.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/footer.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/display.css'%}"/>
     {% block css %}{% endblock %}
 </head>
 
 <body>
 <div class="container">
 
+    <header class="header">
+        <div class="shindan_logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'shindan/img/shindan_logo.png'%}">
+            </a>
+            <p>診断したんだん</p>
+        </div>
+    </header>
 
     <div class="contents">
         {% block contents %}{% endblock %}
     </div>
 
+    <footer class="footer">
+        <div class="copyright">© 2018 System Gust</div>
+        {% block js %}{% endblock %}
+    </footer>
 </div>
 </body>
 </html>
