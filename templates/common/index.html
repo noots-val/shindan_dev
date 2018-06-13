@@ -15,12 +15,218 @@
 {% endblock %}
 
 {% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/index.css'%}"/>
 {% endblock %}
 
 {% block contents %}
-トップ画面
-<a href="{% url 'index' %}">TOP</a>
-<a href="{% url 'syachikuru:questions' %}">QUESTIONS</a>
-<a href="{% url 'syachikuru:result' %}">RESULT</a>
+<h1 class="h1-index_label">診断したんだん</h1>
 
+<h2 class="h2_label">サービス</h2>
+<div class="product_display">
+    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}?param=1">
+        <div>
+            <img src="./img/syachikuru_logo.png" alt="社畜る×ニートる">
+        </div>
+        <p>説 説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            <br> 明説明説明説明説明説明説明説明説明説明説明説明
+        </p>
+    </a>
+    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}?param=2">
+        <div>
+            <img src="./img/syachikuru_logo.png" alt="社畜る×ニートる">
+        </div>
+        <p>説 説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            <br> 明説明説明説明説明説明説明説明説明説明説明説明
+        </p>
+    </a>
+    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}?param=3">
+        <div>
+            <img src="./img/syachikuru_logo.png" alt="社畜る×ニートる">
+        </div>
+        <p>説 説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            <br> 明説明説明説明説明説明説明説明説明説明説明説明
+        </p>
+    </a>
+    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}?param=4">
+        <div>
+            <img src="./img/syachikuru_logo.png" alt="社畜る×ニートる">
+        </div>
+        <p>説 説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            <br> 明説明説明説明説明説明説明説明説明説明説明説明
+        </p>
+    </a>
+    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}?param=5">
+        <div>
+            <img src="./img/syachikuru_logo.png" alt="社畜る×ニートる">
+        </div>
+        <p>説 説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            <br> 明説明説明説明説明説明説明説明説明説明説明説明
+        </p>
+    </a>
+    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}?param=6">
+        <div>
+            <img src="./img/syachikuru_logo.png" alt="社畜る×ニートる">
+        </div>
+        <p>説 説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            <br> 明説明説明説明説明説明説明説明説明説明説明説明
+        </p>
+    </a>
+    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}?param=7">
+        <div>
+            <img src="./img/syachikuru_logo.png" alt="社畜る×ニートる">
+        </div>
+        <p>説 説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            <br> 明説明説明説明説明説明説明説明説明説明説明説明
+        </p>
+    </a>
+    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}?param=8">
+        <div>
+            <img src="./img/syachikuru_logo.png" alt="社畜る×ニートる">
+        </div>
+        <p>説 説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            <br> 明説明説明説明説明説明説明説明説明説明説明説明
+        </p>
+    </a>
+
+    <div class="ads_box">
+        <p class="separator_label">スポンサードリンク</p>
+        <img src="./img/ads.jpeg" alt="広告">
+    </div>
+</div>
+
+
+<div class="article_display">
+    <h2 class="h2_label">アーティクル</h2>
+    <h3 class="h3_label">カテゴリー1</h3>
+    <ul class="article_list">
+        <li>
+            <a>あああああああああああああああああああああああああああああああああああああああああああああああ</a>
+        </li>
+        <li>
+            <a>いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい</a>
+        </li>
+        <li>
+            <a>おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお</a>
+        </li>
+    </ul>
+    <h3 class="h3_label">カテゴリー2</h3>
+    <ul class="article_list">
+        <li>
+            <a>あああああああああああああああああああああああああああああああああああああああああああああああ</a>
+        </li>
+        <li>
+            <a>いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい</a>
+        </li>
+        <li>
+            <a>おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお</a>
+        </li>
+    </ul>
+    <h3 class="h3_label">カテゴリー3</h3>
+    <ul class="article_list">
+        <li>
+            <a>あああああああああああああああああああああああああああああああああああああああああああああああ</a>
+        </li>
+        <li>
+            <a>いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい</a>
+        </li>
+        <li>
+            <a>おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお</a>
+        </li>
+    </ul>
+</div>
+
+<div class="ads_display">
+    <p class="separator_label">スポンサードリンク</p>
+    <img src="./img/ads.jpeg" alt="広告">
+</div>
+
+<div id="js-product_modal" class="product_modal">
+    <div id="js-product-contents_modal" class="product-contents_modal">
+        <div class="product-modal-img-box_dm">
+            <img id="product-modal-img" src="" alt="社畜る×ニートる">
+        </div>
+        <a id="undergo-anchor" class="elliptic-anchor_button">診断する</a>
+        <p>※ 以下を入力して診断すると、より詳細なデータを得ることが出来ます</p>
+        <div class="profile-form_box">
+            <form>
+                <dl>
+                    <dt>
+                        氏名
+                    </dt>
+                    <dd>
+                        <input type="text" class="text_form">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        性別
+                    </dt>
+                    <dd>
+                        <input type="radio" class="radio-input_form" id="radio1" name="sex" value="男"
+                               checked="">
+                        <label class="radio-label_form" for="radio1">男</label>
+                        <input type="radio" class="radio-input_form" id="radio2" name="sex" value="女">
+                        <label class="radio-label_form" for="radio2">女</label>
+                        <input type="radio" class="radio-input_form" id="radio3" name="sex" value="その他の性自認">
+                        <label class="radio-label_form" for="radio3">その他の性自認</label>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        生年月日
+                    </dt>
+                    <dd>
+                        <select class="select_form" name="birth">
+                            <option value="1">1900年</option>
+                            <option value="2">2001年</option>
+                            <option value="3">2018年</option>
+                        </select>
+                        <select class="select_form" name="birth">
+                            <option value="1">1月</option>
+                            <option value="2">2月</option>
+                            <option value="3">3月</option>
+                            <option value="4">4月</option>
+                            <option value="5">5月</option>
+                            <option value="6">6月</option>
+                            <option value="7">7月</option>
+                            <option value="8">8月</option>
+                            <option value="9">9月</option>
+                            <option value="10">10月</option>
+                            <option value="11">11月</option>
+                            <option value="12">12月</option>
+                        </select>
+                        <select class="select_form" name="birth">
+                            <option value="1">1日</option>
+                            <option value="2">2日</option>
+                            <option value="3">3日</option>
+                            <option value="4">4日</option>
+                            <option value="10">10日</option>
+                            <option value="20">20日</option>
+                            <option value="30">30日</option>
+                        </select>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>
+                        職業
+                    </dt>
+                    <dd>
+                        <select class="select_form" name="name">
+                            <option value="選択肢1">選択肢1</option>
+                            <option value="選択肢2">選択肢2</option>
+                            <option value="選択肢3">選択肢ながいよおおおおおお3</option>
+                        </select>
+                    </dd>
+                </dl>
+                <button class="elliptic_button">詳しく診断</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'shindan/js/modal_menu.js'%}"></script>
 {% endblock %}

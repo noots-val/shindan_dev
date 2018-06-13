@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+/* --------------------- プロダクト一覧 --------------------- */
+.product_display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 2rem;
+  margin: 4rem 0;
+}
+
+/* --------------------- 広告一覧 --------------------- */
+.ads_display {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+.ads_display img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2rem;
+  max-width: 100%;
+}

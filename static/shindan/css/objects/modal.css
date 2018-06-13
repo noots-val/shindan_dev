@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* モーダル（背景含む） */
+
+.product_modal {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  z-index: 99;
+  top: 0;
+  background-color: rgba(68, 68, 68, 0.9);
+  opacity: 0;
+}
+
+/* モーダルコンテンツ表示部分 */
+
+.product-contents_modal {
+  position: fixed;
+  overflow-y: scroll;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 1rem 0;
+  top: 10vh;
+  left: 10%;
+  width: 80%;
+  height: 80vh;
+  background-color: #ffffff;
+}
+.product_modal--open {
+  visibility: visible;
+  transition: all 0.5s;
+  opacity: 1;
+}
+
+.product-contents_modal .product-modal-img-box_dm {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  border-bottom: solid 1px #cccccc;
+}
+
+.product-contents_modal .product-modal-img-box_dm img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.product-contents_modal .elliptic-anchor_button {
+  margin: 2rem 0;
+}
+.product-contents_modal p {
+  padding: 2rem;
+}

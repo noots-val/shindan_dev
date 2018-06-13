@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Yasashisa";
+  src: url(../../font/07やさしさゴシック.ttf);
+}
+
+html {
+  font-size: 10px;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+}
+
+body {
+  padding: 1rem;
+  background-color: #cccccc;
+  color: #444444;
+  font-size: 1.6rem;
+}
+
+.container {
+  padding: 1rem;
+  margin: 4rem 0;
+  background-color: #ffffff;
+  border: solid 1px #000000;
+}
+.container-max100px {
+  padding: 1rem;
+  margin: 4rem 0;
+  max-height: 100px;
+  background-color: #ffffff;
+  border: solid 1px #000000;
+
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 2rem;
+}

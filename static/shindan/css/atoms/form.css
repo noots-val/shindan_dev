@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+/* --------------------- テキストボックス --------------------- */
+.text_form {
+  padding: 1.2rem;
+  outline: none;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 0.1rem;
+  -moz-border-radius: 0.1rem;
+  border-radius: 0.1rem;
+  font-size: 1.6rem;
+}
+.text_form:focus {
+  box-shadow: 0 0 7px #ffa057;
+  border: 1px solid #ffa057;
+}
+
+/* --------------------- ラジオボタン --------------------- */
+.radio-input_form {
+  display: none;
+}
+.radio-label_form {
+  display: inline-block;
+  padding: 0.75rem 0px;
+  width: 12rem;
+  border: 1px solid #555555;
+  -webkit-border-radius: 0.1rem;
+  -moz-border-radius: 0.1rem;
+  border-radius: 0.1rem;
+  text-align: center;
+}
+.radio-input_form:checked {
+  background-color: #4ee5da;
+}
+.radio-input_form:checked + .radio-label_form {
+  background-color: #4ee5da;
+}
+
+.radio-label_form:hover {
+  background-color: #4ee5da;
+}
+
+
+/* --------------------- セレクトボックス --------------------- */
+
+.select_form {
+  padding: 1.2rem;
+  outline: none;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 0.1rem;
+  -moz-border-radius: 0.1rem;
+  border-radius: 0.1rem;
+  font-size: 1.6rem;
+}
+.select_form:focus {
+  box-shadow: 0 0 7px #ffa057;
+  border: 1px solid #ffa057;
+}
