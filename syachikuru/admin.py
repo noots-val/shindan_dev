@@ -26,7 +26,7 @@ class CharacteristicAdmin(admin.ModelAdmin):
 
 
 class ChoiceAdmin(admin.ModelAdmin):
-    list_display = ("id", "question", "choice_number", "choice_sentence", "point")
+    list_display = ("id", "question", "choice_sentence", "point")
     search_fields = ["question"]
     ordering = ("id",)
 
@@ -38,7 +38,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class ResultAdmin(admin.ModelAdmin):
-    list_display = ("id", "level", "type", "img_url1", "img_url2", "description")
+    list_display = ("id", "level", "type", "img", "description")
     search_fields = ["product_title"]
     ordering = ("id",)
 
