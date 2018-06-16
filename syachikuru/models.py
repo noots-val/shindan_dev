@@ -28,8 +28,7 @@ class Question(models.Model):
 class Result(models.Model):
     level = models.IntegerField()
     type = models.CharField(max_length=255)
-    img_url1 = models.URLField(null=True)
-    img_url2 = models.URLField(null=True)
+    img = models.ImageField(upload_to='images/', null=True, blank=True)
     description = models.TextField(null=True)
 
     def __str__(self):
@@ -49,7 +48,6 @@ class Candidate(models.Model):
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_number = models.CharField(max_length=255)
     choice_sentence = models.TextField()
     point = models.IntegerField()
 
