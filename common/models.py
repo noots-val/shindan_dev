@@ -17,3 +17,15 @@ class App(models.Model):
 
     def __str__(self):
         return str(self.pk)
+
+
+class Article(models.Model):
+    category = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    status = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+
+    def __str__(self):
+        return str(self.pk)

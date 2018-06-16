@@ -1,0 +1,33 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>診断したんだん</title>
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="気軽に出来る性格診断サイト"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="診断したんだん">
+<meta property="og:description" content="気軽に出来る性格診断サイト"/>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/article.css'%}"/>
+{% endblock %}
+
+{% block contents %}
+{% autoescape off %}
+{{ article.content|linebreaks }}
+{% endautoescape %}
+{% endblock %}
+
+{% block modal %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'shindan/js/modal_menu.js'%}"></script>
+{% endblock %}
