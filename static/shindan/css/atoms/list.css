@@ -5,7 +5,7 @@
   https://www.yuu-diaryblog.com/2017/03/14/list-design/
 */
 .article_list {
-  width: fit-content;
+  width: 95%;
   list-style: none;
 }
 .article_list li {
@@ -42,6 +42,10 @@
   -o-transform: rotate(60deg);
   -ms-transform: rotate(60deg);
   transform: rotate(60deg);
+}
+.article_list li a {
+  text-decoration: none;
+  color: #444444;
 }
 
 /* 質問リスト
