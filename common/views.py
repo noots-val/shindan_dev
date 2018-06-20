@@ -11,7 +11,14 @@ class IndexView(ListView):
         context = super().get_context_data(**kwargs)
         articles = Article.objects.all().filter(status=1)
         context["article_list"] = articles
-        return context
+
+        try:
+            context['error_message'] = self.request.session['error_message']
+            del self.request.session['error_message']
+        except KeyError:
+            pass
+        finally:
+            return context
 
 
 class ArticleView(DetailView):

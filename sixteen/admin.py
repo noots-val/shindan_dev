@@ -1,3 +1,5 @@
+from import_export.admin import ImportExportModelAdmin
+
 from .models import Type
 from .models import Function
 from .models import Group
@@ -16,58 +18,58 @@ from django.contrib import admin
 
 # ================================= 16タイプ共通 ===============================================
 
-class TypeAdmin(admin.ModelAdmin):
+class TypeAdmin(ImportExportModelAdmin):
     list_display = ("id", "name", "description")
     search_fields = ["name"]
     ordering = ("id",)
 
 
-class FunctionAdmin(admin.ModelAdmin):
+class FunctionAdmin(ImportExportModelAdmin):
     list_display = ("id", "name", "description")
     search_fields = ["name"]
     ordering = ("id",)
 
 
-class GroupAdmin(admin.ModelAdmin):
+class GroupAdmin(ImportExportModelAdmin):
     list_display = ("id", "category", "name", "description")
     search_fields = ["name"]
     ordering = ("id",)
 
 
-class TypeFunctionAdmin(admin.ModelAdmin):
+class TypeFunctionAdmin(ImportExportModelAdmin):
     list_display = ("id", "type_id", "function_id", "hierarchy")
     ordering = ("id",)
 
 
-class TypeGroupAdmin(admin.ModelAdmin):
+class TypeGroupAdmin(ImportExportModelAdmin):
     list_display = ("id", "type_id", "group_id")
     ordering = ("id",)
 
 
-class QuestionAdmin(admin.ModelAdmin):
+class QuestionAdmin(ImportExportModelAdmin):
     list_display = ("id", "category", "question_sentence")
     ordering = ("id",)
 
 
-class ChoiceAdmin(admin.ModelAdmin):
+class ChoiceAdmin(ImportExportModelAdmin):
     list_display = ("id", "question_id", "choice_sentence", "point")
     ordering = ("id",)
 
 
-class AnswerAdmin(admin.ModelAdmin):
+class AnswerAdmin(ImportExportModelAdmin):
     list_display = ("id", "question_id", "choice_id", "type_id")
     search_fields = ["type_id"]
     ordering = ("id",)
 
 
-class AnimeAdmin(admin.ModelAdmin):
+class AnimeAdmin(ImportExportModelAdmin):
     list_display = ("id", "title", "character_name", "type_id")
     ordering = ("id",)
 
 
 # ================================= 動物 ===============================================
 
-class AnimalResultAdmin(admin.ModelAdmin):
+class AnimalResultAdmin(ImportExportModelAdmin):
     list_display = ("id", "type_id", "name", "head", "description", "img")
     list_editable = ("name", "head", "description", "img")
     search_fields = ["type_id"]
@@ -76,22 +78,22 @@ class AnimalResultAdmin(admin.ModelAdmin):
 
 # ================================= ポケモン ===============================================
 
-class PokemonResultAdmin(admin.ModelAdmin):
+class PokemonResultAdmin(ImportExportModelAdmin):
     list_display = ("id", "type_id", "name", "head", "description", "img")
     list_editable = ("name", "head", "description", "img")
     search_fields = ["type_id"]
     ordering = ("id",)
 
 
-class PokemonAdmin(admin.ModelAdmin):
-    list_display = ("id", "character_name", "pokemon_result")
-    search_fields = ["pokemon_result"]
+class PokemonAdmin(ImportExportModelAdmin):
+    list_display = ("id", "character_name", "type")
+    list_editable = ("id", "character_name", "type")
     ordering = ("id",)
 
 
 # ================================= RPG ===============================================
 
-class RpgResultAdmin(admin.ModelAdmin):
+class RpgResultAdmin(ImportExportModelAdmin):
     list_display = ("id", "type_id", "name", "head", "description", "img")
     list_editable = ("name", "head", "description", "img")
     search_fields = ["type_id"]

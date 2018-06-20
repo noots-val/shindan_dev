@@ -11,6 +11,7 @@
 .product_box div {
   display: flex;
   justify-content: center;
+  padding-bottom: 1rem;
   height: 200px;
   border-bottom: 1px solid #cccccc;
 }

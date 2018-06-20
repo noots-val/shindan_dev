@@ -63,7 +63,7 @@ class Anime(models.Model):
 
 
 class Question(models.Model):
-    category = models.CharField(max_length=255)
+    category = models.IntegerField()
     question_sentence = models.TextField()
 
     def __str__(self):
@@ -116,8 +116,8 @@ class PokemonResult(models.Model):
 
 
 class Pokemon(models.Model):
+    type = models.ForeignKey(Type, on_delete=models.CASCADE)
     character_name = models.CharField(max_length=255)
-    pokemon_result = models.ForeignKey(PokemonResult, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.pk)
