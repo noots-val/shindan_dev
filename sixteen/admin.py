@@ -87,7 +87,7 @@ class PokemonResultAdmin(ImportExportModelAdmin):
 
 class PokemonAdmin(ImportExportModelAdmin):
     list_display = ("id", "character_name", "type")
-    list_editable = ("id", "character_name", "type")
+    list_editable = ("character_name", "type")
     ordering = ("id",)
 
 
