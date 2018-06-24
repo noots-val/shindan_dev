@@ -2,16 +2,17 @@
 {% load static %}
 
 {% block title %}
-<title>診断したんだん</title>
+<title>あなたは{{ animal_result.name }}タイプ（{{ object.name }}型） | 診断したんだん</title>
+<meta content="あなたは{{ animal_result.name }}タイプ（{{ object.name }}型） | 診断したんだん" name="title">
 {% endblock %}
 
 {% block description %}
-<meta name="description" content="気軽に出来る性格診断サイト"/>
+<meta name="description" content="あなたを動物に例えると{{ animal_result.name }}タイプ（{{ object.name }}型）です。MBTIなど既存の診断を基にして、気軽に楽しめる性格診断を提供しています。"/>
 {% endblock %}
 
 {% block ogp %}
-<meta property="og:title" content="診断したんだん">
-<meta property="og:description" content="気軽に出来る性格診断サイト"/>
+<meta property="og:title" content="あなたは{{ animal_result.name }}タイプ（{{ object.name }}型） | 診断したんだん">
+<meta property="og:description" content="あなたを動物に例えると{{ animal_result.name }}タイプ（{{ object.name }}型）です。MBTIなど既存の診断を基にして、気軽に楽しめる性格診断を提供しています。">
 {% endblock %}
 
 {% block css %}
