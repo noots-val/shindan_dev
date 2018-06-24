@@ -34,31 +34,7 @@
     </a>
     {% endif %}
     {% endfor %}
-    <div class="ads_box">
-        <p class="separator_label">スポンサードリンク</p>
-        <img src="{% static 'shindan/img/ads.jpeg'%}" alt="広告">
-    </div>
 </div>
-
-
-<h2 class="h2_label">カジュアルな診断</h2>
-<div class="product_display">
-    {% for app in app_list %}
-    {% if app.category == 'syachikuru' %}
-    <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}">
-        <div>
-            <img src="{{app.logo.url}}" alt="{{app.title}}">
-        </div>
-        <p>{{app.summary}}</p>
-    </a>
-    {% endif %}
-    {% endfor %}
-    <div class="ads_box">
-        <p class="separator_label">スポンサードリンク</p>
-        <img src="{% static 'shindan/img/ads.jpeg'%}" alt="広告">
-    </div>
-</div>
-
 
 <div class="article_display">
     <h2 class="h2_label">アーティクル</h2>
@@ -82,22 +58,8 @@
         {% endif %}
         {% endfor %}
     </ul>
-    <h3 class="h3_label">カジュアル</h3>
-    <ul class="article_list">
-        {% for article in article_list %}
-        {% if article.category == 'casual' %}
-        <li>
-            <a href="{% url 'article' article.pk %}">{{ article.title }}</a>
-        </li>
-        {% endif %}
-        {% endfor %}
-    </ul>
 </div>
 
-<div class="ads_display">
-    <p class="separator_label">スポンサードリンク</p>
-    <img src="{% static 'shindan/img/ads.jpeg'%}" alt="広告">
-</div>
 {% endblock %}
 
 {% block js %}
