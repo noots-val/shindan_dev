@@ -1,3 +1,4 @@
+{% load static %}
 <div id="js-product_modal" class="product_modal">
     <div id="js-product-contents_modal" class="product-contents_modal">
         <div class="product-modal-img-box_dm">
@@ -9,7 +10,10 @@
 
 <div id="js-error_modal" class="error_modal">
     <div id="js-error-contents_modal" class="error-contents_modal">
+        <div class="error-modal-img-box_dm">
+            <img id="error-modal-img" src="{% static 'shindan/img/error_large.png' %}">
+        </div>
         <h2 class="h2_label">エラーが発生しました</h2>
-        <p id="error-message">{{ error_message }}</p>
+        <p id="error-message">{{ error_message|linebreaksbr }}</p>
     </div>
 </div>
