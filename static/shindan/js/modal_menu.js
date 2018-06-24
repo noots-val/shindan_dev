@@ -60,7 +60,7 @@ var errorModalOpen = function (errorMessage) {
 
   document.getElementById("error-message").innerHTML = errorMessage;
   
-  return true;
+  return false;
 };
 
 if (document.getElementById("error-message").innerHTML) {

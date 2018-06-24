@@ -31,3 +31,14 @@
   -moz-border-radius: 2.4rem;
   text-align: center;
 }
+
+.rectangle_button {
+  display: inline-block;
+  padding: 0.75rem 0px;
+  width: 12rem;
+  border: 1px solid #555555;
+  -webkit-border-radius: 0.1rem;
+  -moz-border-radius: 0.1rem;
+  border-radius: 0.1rem;
+  text-align: center;
+}
