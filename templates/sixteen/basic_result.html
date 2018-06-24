@@ -2,16 +2,18 @@
 {% load static %}
 
 {% block title %}
-<title>あなたの性格は{{ object.name }}型です | 診断したんだん</title>
+<title>{{ object.name }}型の診断結果 | 診断したんだん</title>
+<meta content="{{ object.name }}型の診断結果 | 診断したんだん" name="title">
+<title></title>
 {% endblock %}
 
 {% block description %}
-<meta name="description" content="気軽に出来る性格診断サイト"/>
+<meta name="description" content="{{ object.name }}型の解説です。MBTIなど既存の診断を基にして、気軽に楽しめる性格診断を提供しています。"/>
 {% endblock %}
 
 {% block ogp %}
-<meta property="og:title" content="あなたの性格は{{ object.name }}型です | 診断したんだん">
-<meta property="og:description" content="気軽に出来る性格診断サイト"/>
+<meta property="og:title" content="{{ object.name }}型の診断結果 | 診断したんだん">
+<meta property="og:description" content="{{ object.name }}型の解説です。MBTIなど既存の診断を基にして、気軽に楽しめる性格診断を提供しています。">
 {% endblock %}
 
 {% block css %}
