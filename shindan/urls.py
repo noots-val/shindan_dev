@@ -30,6 +30,8 @@ urlpatterns = [
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+urlpatterns += static.static(settings.CERT_URL, document_root=settings.CERT_ROOT)
+
 if settings.DEBUG:
     import debug_toolbar
 
