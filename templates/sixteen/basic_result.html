@@ -1,0 +1,92 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>診断したんだん</title>
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="気軽に出来る性格診断サイト"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="診断したんだん">
+<meta property="og:description" content="気軽に出来る性格診断サイト"/>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/result.css'%}"/>
+{% endblock %}
+
+{% block contents %}
+<article>
+    <h1 class="h1_label">診断結果</h1>
+    <img src="./img/shindan_logo.png">
+    <div class="ads_display">
+        <p class="separator_label">スポンサードリンク</p>
+        <img src="./img/ads.jpeg" alt="広告">
+    </div>
+    <h2 class="h2_label">{{ object.name }}型の説明</h2>
+    <p>{{ type.description|linebreaks }}</p>
+    <h2 class="h2_label">{{ object.name }}型の心理機能</h2>
+    <p>人の心を八種類の機能に分けたとき、{{ object.name }}型が使用する機能を優先順位が高い順に並べています。</p>
+
+    {% for typefunction in typefunction_list %}
+    {% if forloop.counter == 1 %}
+    <h3 class="h3_label">第一機能 {{ typefunction.function.name }}</h3>
+    <p>{{ typefunction.function.description }}</p>
+    {% endif %}
+    {% if forloop.counter == 2 %}
+    <h3 class="h3_label">第二機能 {{ typefunction.function.name }}</h3>
+    <p>{{ typefunction.function.description }}</p>
+    {% endif %}
+    {% if forloop.counter == 3 %}
+    <h3 class="h3_label">第三機能 {{ typefunction.function.name }}</h3>
+    <p>{{ typefunction.function.description }}</p>
+    {% endif %}
+    {% if forloop.counter == 4 %}
+    <h3 class="h3_label">第四機能 {{ typefunction.function.name }}</h3>
+    <p>{{ typefunction.function.description }}</p>
+    {% endif %}
+    {% endfor %}
+    <h2 class="h2_label">{{ object.name }}型のアニメキャラクター</h2>
+    <ul class="article_list">
+        {% for anime in anime_list %}
+        <li>
+            <a>{{ anime.character_name }}（{{ anime.title }}）</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2 class="h2_label">もっと詳しく調べたい方は……</h2>
+    <p>こちらの記事もお読みになってくださると嬉しいです。</p>
+    <ul class="article_list">
+        {% for article in article_list %}
+        <li>
+            <a href="{% url 'article' article.id %}">{{ article.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2 class="h2_label">おすすめの診断</h2>
+    <div class="product_display">
+        {% for app in app_list %}
+        {% if app.id != 2 %}
+        <a class="product_box js_product-open" href="{% url 'sixteen:questions' %}?product_id={{ app.id }}">
+            <div>
+                <img src="/media/{{ app.logo }}" alt="{{ app.title }}">
+            </div>
+            <p>{{app.summary}}</p>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</article>
+
+<div class="ads_display">
+    <p class="separator_label">スポンサードリンク</p>
+    <img src="./img/ads.jpeg" alt="広告">
+</div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

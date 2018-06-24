@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/header.css'%}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/footer.css'%}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/display.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
     {% block css %}{% endblock %}
 </head>
 
@@ -45,7 +46,7 @@
     <header class="header">
         <div class="shindan_logo">
             <a href="{% url 'index' %}">
-                <img src="{% static 'shindan/img/shindan_logo.png'%}">
+                <img src="{% static 'shindan/img/shindan_logo.png' %}">
             </a>
             <p>診断したんだん</p>
         </div>
@@ -55,10 +56,11 @@
         {% block contents %}{% endblock %}
     </div>
 
-    {% block modal %}{% endblock %}
+    {% include 'common/modals.html' %}
 
     <footer class="footer">
         <div class="copyright">© 2018 System Gust</div>
+        <script type="text/javascript" src="{% static 'shindan/js/modal_menu.js'%}"></script>
         {% block js %}{% endblock %}
     </footer>
 </div>

@@ -1,0 +1,78 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>診断したんだん</title>
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="気軽に出来る性格診断サイト"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="診断したんだん">
+<meta property="og:description" content="気軽に出来る性格診断サイト"/>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/result.css'%}"/>
+{% endblock %}
+
+{% block contents %}
+<article>
+    <h1 class="h1_label">診断結果</h1>
+
+    <h2 class="h2_label">{{ pokemon_result.name }}タイプ（{{ object.name }}型）の説明</h2>
+    <img src="{{ pokemon_result.img.url }}">
+    <p>{{ pokemon_result.head | linebreaks }}</p>
+    <p>{{ type.description | linebreaks }}</p>
+
+    <div class="ads_display">
+        <p class="separator_label">スポンサードリンク</p>
+        <img src="./img/ads.jpeg" alt="広告">
+    </div>
+
+    <h2 class="h2_label">{{ pokemon_result.name }}タイプって？</h2>
+    <p>{{ pokemon_result.description | linebreaks }}</p>
+
+    <h2 class="h2_label">{{ pokemon_result.name }}タイプのポケモン</h2>
+    <ul class="article_list">
+        {% for pokemon in pokemon_list %}
+        <li>
+            <a>{{ pokemon.character_name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2 class="h2_label">もっと詳しく調べたい方は……</h2>
+    <p>上の解説は16タイプ性格診断の{{ object.name }}型の解説を基にしております。<br>こちらの記事もお読みになってくださると嬉しいです。</p>
+    <ul class="article_list">
+        {% for article in article_list %}
+        <li>
+            <a href="{% url 'article' article.id %}">{{ article.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2 class="h2_label">おすすめの診断</h2>
+    <div class="product_display">
+        {% for app in app_list %}
+        {% if app.id != 4 %}
+        <a class="product_box js_product-open" href="{% url 'sixteen:questions' %}?product_id={{ app.id }}">
+            <div>
+                <img src="/media/{{ app.logo }}" alt="{{ app.title }}">
+            </div>
+            <p>{{app.summary}}</p>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</article>
+
+<div class="ads_display">
+    <p class="separator_label">スポンサードリンク</p>
+    <img src="./img/ads.jpeg" alt="広告">
+</div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

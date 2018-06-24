@@ -15,7 +15,6 @@
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/index.css'%}"/>
 {% endblock %}
 
@@ -27,9 +26,9 @@
 <div class="product_display">
     {% for app in app_list %}
     {% if app.category == 'sixteen' %}
-    <a class="product_box js_product-open" href="{% url 'sixteen:questions' %}">
+    <a class="product_box js_product-open" href="{% url 'sixteen:questions' %}?product_id={{ app.id }}">
         <div>
-            <img src="{{app.img}}" alt="{{app.title}}">
+            <img src="{{app.logo.url}}" alt="{{app.title}}">
         </div>
         <p>{{app.summary}}</p>
     </a>
@@ -37,7 +36,7 @@
     {% endfor %}
     <div class="ads_box">
         <p class="separator_label">スポンサードリンク</p>
-        <img src="./img/ads.jpeg" alt="広告">
+        <img src="{% static 'shindan/img/ads.jpeg'%}" alt="広告">
     </div>
 </div>
 
@@ -48,7 +47,7 @@
     {% if app.category == 'syachikuru' %}
     <a class="product_box js_product-open" href="{% url 'syachikuru:questions' %}">
         <div>
-            <img src="{{app.img}}" alt="{{app.title}}">
+            <img src="{{app.logo.url}}" alt="{{app.title}}">
         </div>
         <p>{{app.summary}}</p>
     </a>
@@ -56,7 +55,7 @@
     {% endfor %}
     <div class="ads_box">
         <p class="separator_label">スポンサードリンク</p>
-        <img src="./img/ads.jpeg" alt="広告">
+        <img src="{% static 'shindan/img/ads.jpeg'%}" alt="広告">
     </div>
 </div>
 
@@ -97,23 +96,9 @@
 
 <div class="ads_display">
     <p class="separator_label">スポンサードリンク</p>
-    <img src="./img/ads.jpeg" alt="広告">
-</div>
-{% endblock %}
-
-{% block modal %}
-<div id="js-product_modal" class="product_modal">
-    <div id="js-product-contents_modal" class="product-contents_modal">
-        <div class="product-modal-img-box_dm">
-            <img id="product-modal-img" src="" alt="社畜る×ニートる">
-        </div>
-        <a id="undergo-anchor" class="elliptic-anchor_button">診断する</a>
-        <p>※ 以下を入力して診断すると、より詳細なデータを得ることが出来ます</p>
-
-    </div>
+    <img src="{% static 'shindan/img/ads.jpeg'%}" alt="広告">
 </div>
 {% endblock %}
 
 {% block js %}
-<script type="text/javascript" src="{% static 'shindan/js/modal_menu.js'%}"></script>
 {% endblock %}
