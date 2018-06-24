@@ -1,0 +1,106 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>{{ object.name }}型の診断結果 | 診断したんだん</title>
+<meta content="{{ object.name }}型の診断結果 | 診断したんだん" name="title">
+<title></title>
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="{{ object.name }}型の解説です。MBTIなど既存の診断を基にして、気軽に楽しめる性格診断を提供しています。"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="{{ object.name }}型の診断結果 | 診断したんだん">
+<meta property="og:description" content="{{ object.name }}型の解説です。MBTIなど既存の診断を基にして、気軽に楽しめる性格診断を提供しています。">
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/result.css'%}"/>
+{% endblock %}
+
+{% block contents %}
+<article>
+    <h1 class="h1_label">診断結果</h1>
+    <img src="./img/shindan_logo.png">
+
+    <h2 class="h2_label">{{ object.name }}型の説明</h2>
+    <p>{{ type.description|linebreaks }}</p>
+    <h2 class="h2_label">{{ object.name }}型の心理機能</h2>
+    <p>人の心を八種類の機能に分けたとき、{{ object.name }}型が使用する機能を優先順位が高い順に並べています。</p>
+
+    {% for typefunction in typefunction_list %}
+    {% if forloop.counter == 1 %}
+    <h3 class="h3_label">第一機能 {{ typefunction.function.name }}</h3>
+    <p>{{ typefunction.function.description }}</p>
+    {% endif %}
+    {% if forloop.counter == 2 %}
+    <h3 class="h3_label">第二機能 {{ typefunction.function.name }}</h3>
+    <p>{{ typefunction.function.description }}</p>
+    {% endif %}
+    {% if forloop.counter == 3 %}
+    <h3 class="h3_label">第三機能 {{ typefunction.function.name }}</h3>
+    <p>{{ typefunction.function.description }}</p>
+    {% endif %}
+    {% if forloop.counter == 4 %}
+    <h3 class="h3_label">第四機能 {{ typefunction.function.name }}</h3>
+    <p>{{ typefunction.function.description }}</p>
+    {% endif %}
+    {% endfor %}
+    <h2 class="h2_label">{{ object.name }}型のアニメキャラクター</h2>
+    <ul class="article_list">
+        {% for anime in anime_list %}
+        <li>
+            <a>{{ anime.character_name }}（{{ anime.title }}）</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2 class="h2_label">もっと詳しく調べたい方は……</h2>
+    <p>こちらの記事もお読みになってくださると嬉しいです。</p>
+    <ul class="article_list">
+        {% for article in article_list %}
+        <li>
+            <a href="{% url 'article' article.id %}">{{ article.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="h2_label">この結果を共有する</h2>
+    Twitter：
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
+        Tweet
+    </a>
+    <br>
+    <br>
+    Facebook：
+    <div class="fb-share-button" data-href="https://shindan-shitandan.com" data-layout="button" data-size="small" data-mobile-iframe="true">
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshindan-shitandan.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a>
+    </div>
+    <br>
+    <br>
+    LINE：
+    <div class="line-it-button" data-lang="ja" data-type="like" data-url="https://shindan-shitandan.com/" style="display: none;"></div>
+
+    <h2 class="h2_label">おすすめの診断</h2>
+    <div class="product_display">
+        {% for app in app_list %}
+        {% if app.id != 2 %}
+        <a class="product_box js_product-open" href="{% url 'sixteen:questions' %}?product_id={{ app.id }}">
+            <div>
+                <img src="/media/{{ app.logo }}" alt="{{ app.title }}">
+            </div>
+            <p>{{app.summary}}</p>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</article>
+
+{% endblock %}
+
+{% block js %}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+{% endblock %}

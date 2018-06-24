@@ -1,0 +1,89 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>あなたは{{ animal_result.name }}タイプ（{{ object.name }}型） | 診断したんだん</title>
+<meta content="あなたは{{ animal_result.name }}タイプ（{{ object.name }}型） | 診断したんだん" name="title">
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="あなたを動物に例えると{{ animal_result.name }}タイプ（{{ object.name }}型）です。MBTIなど既存の診断を基にして、気軽に楽しめる性格診断を提供しています。"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="あなたは{{ animal_result.name }}タイプ（{{ object.name }}型） | 診断したんだん">
+<meta property="og:description" content="あなたを動物に例えると{{ animal_result.name }}タイプ（{{ object.name }}型）です。MBTIなど既存の診断を基にして、気軽に楽しめる性格診断を提供しています。">
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/result.css'%}"/>
+{% endblock %}
+
+{% block contents %}
+<article>
+    <h1 class="h1_label">診断結果</h1>
+
+    <h2 class="h2_label">{{ animal_result.name }}タイプ（{{ object.name }}型）の説明</h2>
+    <img src="{{ animal_result.img.url }}">
+    <p>{{ animal_result.head | linebreaks }}</p>
+    <p>{{ type.description | linebreaks }}</p>
+
+    <h2 class="h2_label">{{ animal_result.name }}ってどんな動物？</h2>
+    <p>{{ animal_result.description | linebreaks }}</p>
+
+    <h2 class="h2_label">同じタイプのアニメキャラクター</h2>
+    <ul class="article_list">
+        {% for anime in anime_list %}
+        <li>
+            <a>{{ anime.character_name }}（{{ anime.title }}）</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2 class="h2_label">もっと詳しく調べたい方は……</h2>
+    <p>上の解説は16タイプ性格診断の{{ object.name }}型の解説を基にしております。<br>こちらの記事もお読みになってくださると嬉しいです。</p>
+    <ul class="article_list">
+        {% for article in article_list %}
+        <li>
+            <a href="{% url 'article' article.id %}">{{ article.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="h2_label">この結果を共有する</h2>
+    Twitter：
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
+        Tweet
+    </a>
+    <br>
+    <br>
+    Facebook：
+    <div class="fb-share-button" data-href="https://shindan-shitandan.com" data-layout="button" data-size="small" data-mobile-iframe="true">
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshindan-shitandan.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a>
+    </div>
+    <br>
+    <br>
+    LINE：
+    <div class="line-it-button" data-lang="ja" data-type="like" data-url="https://shindan-shitandan.com/" style="display: none;"></div>
+
+    <h2 class="h2_label">おすすめの診断</h2>
+    <div class="product_display">
+        {% for app in app_list %}
+        {% if app.id != 3 %}
+        <a class="product_box js_product-open" href="{% url 'sixteen:questions' %}?product_id={{ app.id }}">
+            <div>
+                <img src="/media/{{ app.logo }}" alt="{{ app.title }}">
+            </div>
+            <p>{{app.summary}}</p>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</article>
+
+{% endblock %}
+
+{% block js %}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+{% endblock %}

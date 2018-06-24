@@ -1,0 +1,34 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>{{ article.title }} | 診断したんだん</title>
+<meta content="{{ article.title }} | 診断したんだん" name="title">
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="『診断したんだん』は気軽に出来る性格診断です。こちらは『{{ article.title }}』の記事です。娯楽気分で楽しめるカジュアルな診断の他、MBTIなどの解説記事も公開中。"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="{{ article.title }} | 診断したんだん">
+<meta property="og:description" content="『診断したんだん』は気軽に出来る性格診断です。こちらは『{{ article.title }}』の記事です。娯楽気分で楽しめるカジュアルな診断の他、MBTIなどの解説記事も公開中。">
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/article.css'%}"/>
+{% endblock %}
+
+{% block contents %}
+{% autoescape off %}
+{{ article.content|linebreaks }}
+{% endautoescape %}
+{% endblock %}
+
+{% block modal %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'shindan/js/modal_menu.js'%}"></script>
+{% endblock %}

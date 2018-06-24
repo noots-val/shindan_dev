@@ -1,0 +1,67 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>診断したんだん - 気軽に出来る性格診断</title>
+<meta content="診断したんだん - 気軽に出来る性格診断" name="title">
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="気軽に出来る性格診断です。MBTIなどの既存の診断を基礎にしたオリジナルコンテンツを提供しています。娯楽気分で楽しめるカジュアルな診断の他、MBTIなどの解説記事も公開中。"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="診断したんだん - 気軽に出来る性格診断">
+<meta property="og:description" content="気軽に出来る性格診断です。MBTIなどの既存の診断を基礎にしたオリジナルコンテンツを提供しています。娯楽気分で楽しめるカジュアルな診断の他、MBTIなどの解説記事も公開中。">
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/index.css'%}"/>
+{% endblock %}
+
+{% block contents %}
+<h1 class="h1-index_label">診断したんだん</h1>
+
+<h2 class="h2_label">16タイプ性格診断</h2>
+
+<div class="product_display">
+    {% for app in app_list %}
+    {% if app.category == 'sixteen' %}
+    <a class="product_box js_product-open" href="{% url 'sixteen:questions' %}?product_id={{ app.id }}">
+        <div>
+            <img src="{{app.logo.url}}" alt="{{app.title}}">
+        </div>
+        <p>{{app.summary}}</p>
+    </a>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<div class="article_display">
+    <h2 class="h2_label">アーティクル</h2>
+    <h3 class="h3_label">診断したんだんについて</h3>
+    <ul class="article_list">
+        {% for article in article_list %}
+        {% if article.category == 'shindan' %}
+        <li>
+            <a href="{% url 'article' article.pk %}">{{ article.title }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <h3 class="h3_label">16タイプ性格診断について</h3>
+    <ul class="article_list">
+        {% for article in article_list %}
+        {% if article.category == 'sixteen' %}
+        <li>
+            <a href="{% url 'article' article.pk %}">{{ article.title }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}

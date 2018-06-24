@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load static %}
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111323813-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-111323813-2');
+
+    </script>
+
+    <meta charset="utf-8"/>
+
+    {% block title %}{% endblock %}
+    {% block description %}{% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/png" href="{% static 'shindan/img/shindan_logo.png'%}">
+
+    <meta property="og:site_name" content="診断したんだん">
+    {% block ogp %}{% endblock %}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shindan-shitandan.com">
+    <meta property="og:image" content="{% static 'shindan/img/shindan_logo.png'%}">
+    <meta content="summary" name="twitter:card" />
+    <meta content="@twitter_acount" name="twitter:site" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/basic/reset.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/basic/basic.css'%}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/atoms/label.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/atoms/form.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/atoms/button.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/atoms/list.css'%}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/molecules/logo.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/molecules/box.css'%}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/header.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/footer.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/display.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'shindan/css/objects/modal.css'%}"/>
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.0';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="container">
+
+    <header class="header">
+        <div class="shindan_logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'shindan/img/shindan_logo.png' %}">
+            </a>
+            <p>診断したんだん</p>
+        </div>
+    </header>
+
+    <div class="contents">
+        {% block contents %}{% endblock %}
+    </div>
+
+    {% include 'common/modals.html' %}
+
+    <footer class="footer">
+        <div class="copyright">© 2018 System Gust</div>
+        <script type="text/javascript" src="{% static 'shindan/js/modal_menu.js'%}"></script>
+        {% block js %}{% endblock %}
+    </footer>
+</div>
+</body>
+</html>

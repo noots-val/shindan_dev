@@ -1,0 +1,50 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>16タイプ性格診断 質問画面 | 診断したんだん</title>
+<meta content="診断したんだん - 16タイプ性格診断 質問画面" name="title">
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="気軽に出来る性格診断です。16の性格タイプにあなたを分類します。"/>
+{% endblock %}
+
+{% block ogp %}
+<meta property="og:title" content="診断したんだん - 16タイプ性格診断 質問画面">
+<meta property="og:description" content="気軽に出来る性格診断です。16の性格タイプにあなたを分類します。">
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shindan/css/pages/question.css'%}"/>
+{% endblock %}
+
+{% block contents %}
+<h1 class="h1_label">16タイプ性格診断</h1>
+<h2 class="h2_label">1. 次の質問に回答してください</h2>
+<div class="question-form_box">
+    <form onsubmit="return validateQuestionForm()" action="{% url 'sixteen:answer' %}" method="post">
+        <ol class="question_list">
+            {% for display_question in display_question_list %}
+            <li>
+                <p class="question-sentence_dm">{{ display_question.question_sentence }}</p>
+                {% for choice_of_question in display_question.choices_of_question %}
+                <input type="radio" class="radio-input_form"
+                       id="choice{{ display_question.question_id }}-{{ forloop.counter }}"
+                       name="radio{{ display_question.question_id }}" value="{{ choice_of_question.id }}">
+                <label class="radio-label_form" for="choice{{ display_question.question_id }}-{{ forloop.counter }}">{{choice_of_question.choice_sentence}}</label>
+                {% endfor %}
+            </li>
+            {% endfor %}
+        </ol>
+        <input type="hidden" value="{{ product_id }}" name="target_product">
+        <button type="submit" id="js-radio-validate" class="elliptic_button">結果を見る</button>
+        {% csrf_token %}
+    </form>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'shindan/js/validate.js'%}"></script>
+{% endblock %}

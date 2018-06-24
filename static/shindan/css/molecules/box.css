@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+/* --------------------- プロダクト --------------------- */
+.product_box {
+  display: block;
+  padding: 1rem;
+  height: 300px;
+  text-decoration: none;
+  border: 2px solid #cccccc;
+}
+.product_box div {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+  height: 200px;
+  border-bottom: 1px solid #cccccc;
+}
+.product_box div img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.product_box p {
+  padding: 1rem 0;
+  color: #444444;
+}
+
+/* --------------------- 広告 --------------------- */
+.ads_box {
+  height: 300px;
+}
+.ads_box p {
+  width: 100%;
+}
+.ads_box img {
+  box-sizing: border-box;
+  padding-top: 1rem;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* --------------------- プロフィールフォーム --------------------- */
+.profile-form_box {
+  box-sizing: border-box;
+  padding: 2rem;
+  width: fit-content;
+}
+.profile-form_box dl {
+  padding-bottom: 2rem;
+  align-items: center;
+}
+.profile-form_box dt {
+  padding: 1rem 0;
+}
+.profile-form_box dd {
+  display: flex;
+  flex-flow: column;
+}
+.profile-form_box .radio-label_form,
+.profile-form_box .select_form {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.profile-form_box .elliptic_button {
+  margin: 0 auto;
+}
+
+/* --------------------- 質問フォーム --------------------- */
+.question-form_box .question_list li p {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+.question-form_box .question_list li .radio-label_form {
+  margin-top: 1rem;
+}
+.question-form_box .elliptic_button {
+  margin: 0 auto;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+}
+@media screen and (max-width: 767px) {
+  .question-form_box .question_list li .radio-label_form {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .question-form_box .question_list li .radio-label_form {
+    margin-left: 1rem;
+  }
+}
