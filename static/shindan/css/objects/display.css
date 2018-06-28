@@ -20,3 +20,19 @@
   margin-top: 2rem;
   max-width: 100%;
 }
+
+/* --------------------- 16タイプ一覧 --------------------- */
+.sixteen-type_display {
+  display: grid;
+  grid-template-columns: repeat(2, 13rem);
+  justify-content: center;
+  width: 100%;
+}
+.sixteen-type_display .rectangle_button {
+  border: 1px solid #000000;
+}
+@media screen and (min-width: 768px) {
+  .sixteen-type_display {
+    grid-template-columns: repeat(4, 13rem);
+  }
+}

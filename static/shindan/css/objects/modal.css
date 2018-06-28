@@ -19,7 +19,6 @@
 .product-contents_modal {
   position: fixed;
   overflow-y: scroll;
-  display: flex;
   flex-flow: column;
   align-items: center;
   padding: 1rem 0;
@@ -43,7 +42,7 @@
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   width: 100%;
-  height: 40%;
+  height: 40vh;
   border-bottom: solid 1px #cccccc;
 }
 .product-contents_modal .product-modal-img-box_dm img {
@@ -52,10 +51,15 @@
   max-height: 100%;
 }
 .product-contents_modal .elliptic-anchor_button {
-  margin: 2rem 0;
+  margin: 0 auto;
 }
 .product-contents_modal p {
-  padding: 2rem;
+  padding: 4rem 2rem 0 2rem;
+}
+@media screen and (min-width: 768px) {
+  .product-contents_modal p {
+    text-align: center;
+  }
 }
 
 /* --------------------- エラーモーダル --------------------- */

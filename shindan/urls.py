@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('common.urls')),
     path('syachikuru/', include('syachikuru.urls')),
     path('sixteen/', include('sixteen.urls')),
-    path('admin/', admin.site.urls),
+    path('noots-admin/', admin.site.urls),
     path('robots.txt/', TemplateView.as_view(template_name='common/robots.txt', content_type='text/plain')),
 ]
 
