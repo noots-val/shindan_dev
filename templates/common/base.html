@@ -77,7 +77,11 @@
     {% include 'common/modals.html' %}
 
     <footer class="footer">
-        <div class="copyright">© 2018 System Gust</div>
+        <div>© 2018 System Gust</div>
+        <div>
+            <div><a href="{% url 'article' 2 %}">免責事項</a></div>
+            <div><a href="{% url 'article' 3 %}">プライバシーポリシー</a></div>
+        </div>
         <script type="text/javascript" src="{% static 'shindan/js/modal_menu.js'%}"></script>
         {% block js %}{% endblock %}
     </footer>

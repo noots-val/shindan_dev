@@ -19,7 +19,8 @@ from django.contrib import admin
 # ================================= 16タイプ共通 ===============================================
 
 class TypeAdmin(ImportExportModelAdmin):
-    list_display = ("id", "name", "description")
+    list_display = ("id", "name", "description", "img")
+    list_editable = ("name", "description", "img")
     search_fields = ["name"]
     ordering = ("id",)
 
