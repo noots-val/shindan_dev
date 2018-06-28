@@ -48,5 +48,6 @@
   text-decoration: none;
 }
 .rectangle_button:hover {
-  background: #4ee5da;
+  background: #cdfcf2;
+  color: #5A3124;
 }
