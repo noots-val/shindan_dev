@@ -1,18 +1,10 @@
 @charset "UTF-8";
 
 .shindan_logo {
-  display: flex;
-  max-width: 100%;
-  align-items: center;
-}
-.shindan_logo img {
-  display: block;
-  max-height: 100%;
-  flex: 2;
-}
-.shindan_logo p {
   font-family: Yasashisa;
   padding-left: 1rem;
-  font-size: 3rem;
-  width: fit-content;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #444444;
+  text-decoration: none;
 }
