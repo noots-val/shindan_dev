@@ -31,7 +31,8 @@
 .h1-index_label {
   margin-bottom: 4rem; 
   font-family: Yasashisa;
-  font-size: 4rem;
+  font-size: 3rem;
+  font-weight: normal;
 }
 .h2_label {
   padding: 1rem 0 1rem 1.5rem;
