@@ -197,9 +197,9 @@ def answer(request):
             [sort_point_by_category(choice['point'], question['category']) for choice in choices if
              int(selected_value) == choice['id']]
 
-        first_character = 'I' if ie_point >= 0 else 'E'
+        first_character = 'E' if ie_point >= 0 else 'I'
         second_character = 'S' if sn_point >= 0 else 'N'
-        third_character = 'F' if ft_point >= 0 else 'T'
+        third_character = 'T' if ft_point >= 0 else 'F'
         fourth_character = 'J' if jp_point >= 0 else 'P'
         result_type = first_character + second_character + third_character + fourth_character
 
