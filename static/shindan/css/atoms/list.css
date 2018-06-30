@@ -10,7 +10,7 @@
 }
 .article_list li {
   position: relative;
-  padding: 1rem 1rem 1.2rem 3rem;
+  padding: 1rem 1rem 0.6rem 3rem;
   font-weight: bold;
   border-bottom: 1px solid rgba(127, 69, 50, 0.8);
 }
@@ -79,7 +79,7 @@
 .question_list li:after {
   content: "";
   position: absolute;
-  top: 0.3rem;
+  top: 0.6rem;
   left: -3.2rem;
   width: 1.9rem;
   height: 1.9rem;
