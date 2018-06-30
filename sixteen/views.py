@@ -71,7 +71,7 @@ class BasicResultView(DetailView):
             context['anime_list'] = Anime.objects.all().prefetch_related('type').filter(
                 type__name=self.kwargs['result_type'])
 
-            context['article_list'] = Article.objects.filter(Q(id='6') | Q(id='7')).values()
+            context['article_list'] = Article.objects.filter(Q(id='4') | Q(id='5')).values()
             context['app_list'] = App.objects.filter(category='sixteen').values()
 
         except ObjectDoesNotExist:
@@ -95,7 +95,7 @@ class AnimalResultView(DetailView):
             context['anime_list'] = Anime.objects.all().prefetch_related('type').filter(
                 type__name=self.kwargs['result_type'])
 
-            context['article_list'] = Article.objects.filter(Q(id='6') | Q(id='7')).values()
+            context['article_list'] = Article.objects.filter(Q(id='4') | Q(id='5')).values()
             context['app_list'] = App.objects.filter(category='sixteen').values()
 
         except ObjectDoesNotExist:
@@ -119,7 +119,7 @@ class PokemonResultView(DetailView):
             context['pokemon_list'] = Pokemon.objects.all().prefetch_related('type').filter(
                 type__name=self.kwargs['result_type'])
 
-            context['article_list'] = Article.objects.filter(Q(id='6') | Q(id='7')).values()
+            context['article_list'] = Article.objects.filter(Q(id='4') | Q(id='5')).values()
             context['app_list'] = App.objects.filter(category='sixteen').values()
 
         except ObjectDoesNotExist:
@@ -143,7 +143,7 @@ class RpgResultView(DetailView):
             context['anime_list'] = Anime.objects.all().prefetch_related('type').filter(
                 type__name=self.kwargs['result_type'])
 
-            context['article_list'] = Article.objects.filter(Q(id='6') | Q(id='7')).values()
+            context['article_list'] = Article.objects.filter(Q(id='4') | Q(id='5')).values()
             context['app_list'] = App.objects.filter(category='sixteen').values()
 
         except ObjectDoesNotExist:
