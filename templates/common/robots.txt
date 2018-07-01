@@ -1,5 +1,2 @@
 User-agent : *
-Disallow : /
-Allow : /index
-Allow : /sixteen
-Allow : /article
+Disallow : /noots-admin
