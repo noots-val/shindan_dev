@@ -24,6 +24,15 @@
   background-color: #ffff00;
  }
 
+ .most-emphasize_label {
+  font-weight: bold;
+  color: #ff0000;
+ }
+ .little-emphasize_label {
+  font-weight: bold;
+ }
+
+
 /* --------------------- 見出し --------------------- */
 .h1_label {
   margin-bottom: 3rem; 
