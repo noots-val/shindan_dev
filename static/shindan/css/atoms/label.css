@@ -19,14 +19,14 @@
   line-height: 2.4rem;
 }
 
-.middle-emphasize_label {
-  font-weight: bold;
-  background-color: #ffff00;
- }
 
  .most-emphasize_label {
   font-weight: bold;
   color: #ff0000;
+ }
+ .middle-emphasize_label {
+  font-weight: bold;
+  background-color: #ffff00;
  }
  .little-emphasize_label {
   font-weight: bold;
