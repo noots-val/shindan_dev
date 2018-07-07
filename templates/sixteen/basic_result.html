@@ -26,6 +26,8 @@
     <h1 class="h1_label">診断結果</h1>
     <img src="{{ object.img.url }}">
 
+    {% include 'common/ads2.html' %}
+
     <h2 class="h2_label">{{ object.name }}型の説明</h2>
     <p>{{ type.description|linebreaks }}</p>
     <h2 class="h2_label">{{ object.name }}型の心理機能</h2>

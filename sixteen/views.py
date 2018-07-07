@@ -5,12 +5,12 @@ from django.db.models import Q
 from django.db import transaction
 from django.utils.datastructures import MultiValueDictKeyError
 from django.core.exceptions import ObjectDoesNotExist
-import logging
-
 from .models import Question, Choice, Type, Answer, TypeFunction, Anime, AnimalResult, PokemonResult, Pokemon, RpgResult
 from .enum import ProductId, QuestionCategory
 
 from common.models import App, Article
+
+from raven.contrib.django.raven_compat.models import client
 
 
 class QuestionsView(TemplateView):
@@ -28,13 +28,18 @@ class QuestionsView(TemplateView):
         :return: context(display_question_list, product_id, error_message)
         """
         context = super().get_context_data(**kwargs)
+        error_message = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
 
         try:
             questions = Question.objects.all().values()
             choices = Choice.objects.all().values()
         except ObjectDoesNotExist:
-            context['error_message'] = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
+            client.captureException()
+            context['error_message'] = error_message
             return context
+        except Exception:
+            client.captureException()
+            context['error_message'] = error_message
 
         display_question_list = []
         for question in questions:
@@ -64,6 +69,7 @@ class BasicResultView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        error_message = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
 
         try:
             context['typefunction_list'] = TypeFunction.objects.all().prefetch_related('function').filter(
@@ -75,7 +81,12 @@ class BasicResultView(DetailView):
             context['app_list'] = App.objects.filter(category='sixteen').values()
 
         except ObjectDoesNotExist:
-            context['error_message'] = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
+            context['error_message'] = error_message
+            client.captureException()
+        except Exception:
+            client.captureException()
+            context['error_message'] = error_message
+
         finally:
             return context
 
@@ -88,6 +99,7 @@ class AnimalResultView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        error_message = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
 
         try:
             context['animal_result'] = AnimalResult.objects.all().filter(type__name=self.kwargs['result_type']).get()
@@ -99,7 +111,11 @@ class AnimalResultView(DetailView):
             context['app_list'] = App.objects.filter(category='sixteen').values()
 
         except ObjectDoesNotExist:
-            context['error_message'] = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
+            context['error_message'] = error_message
+            client.captureException()
+        except Exception:
+            client.captureException()
+            context['error_message'] = error_message
         finally:
             return context
 
@@ -112,6 +128,7 @@ class PokemonResultView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        error_message = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
 
         try:
             context['pokemon_result'] = PokemonResult.objects.all().filter(type__name=self.kwargs['result_type']).get()
@@ -123,7 +140,11 @@ class PokemonResultView(DetailView):
             context['app_list'] = App.objects.filter(category='sixteen').values()
 
         except ObjectDoesNotExist:
-            context['error_message'] = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
+            context['error_message'] = error_message
+            client.captureException()
+        except Exception:
+            client.captureException()
+            context['error_message'] = error_message
         finally:
             return context
 
@@ -136,6 +157,7 @@ class RpgResultView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        error_message = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
 
         try:
             context['rpg_result'] = RpgResult.objects.all().filter(type__name=self.kwargs['result_type']).get()
@@ -147,7 +169,11 @@ class RpgResultView(DetailView):
             context['app_list'] = App.objects.filter(category='sixteen').values()
 
         except ObjectDoesNotExist:
-            context['error_message'] = 'しばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
+            context['error_message'] = error_message
+            client.captureException()
+        except Exception:
+            client.captureException()
+            context['error_message'] = error_message
         finally:
             return context
 
@@ -162,6 +188,7 @@ def answer(request):
     :return:
     """
     ie_point = sn_point = ft_point = jp_point = 0
+    error_message = '集計に失敗しました。\nしばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
 
     def sort_point_by_category(point, category_of_question):
         """
@@ -209,9 +236,13 @@ def answer(request):
                 selected_value = request.POST['radio' + str(question['id'])]
                 Answer(question_id=question['id'], choice_id=selected_value, type_id=target_type.pk).save()
 
-    except (AttributeError, MultiValueDictKeyError, ObjectDoesNotExist) as error:
-        request.session['error_message'] = '集計に失敗しました。\nしばらく経ってもエラーが解消しない場合、管理者にご報告していただけると幸いです。'
+    except (AttributeError, MultiValueDictKeyError, ObjectDoesNotExist):
+        request.session['error_message'] = error_message
+        client.captureException()
         return HttpResponseRedirect(reverse('index'))
+    except Exception:
+        client.captureException()
+        request.session['error_message'] = error_message
     else:
         if target_product == ProductId.BASIC.value:
             return HttpResponseRedirect(reverse('sixteen:basic_result', kwargs={'result_type': result_type}))
