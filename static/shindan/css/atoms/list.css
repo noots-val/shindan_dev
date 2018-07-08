@@ -48,6 +48,54 @@
   color: #444444;
 }
 
+/* 記事中リスト（現在は記事タイトルリストと同一）
+  参考
+  https://www.yuu-diaryblog.com/2017/03/14/list-design/
+*/
+.article-content_list {
+  width: 95%;
+  list-style: none;
+}
+.article-content_list li {
+  position: relative;
+  padding: 1rem 1rem 0.6rem 3rem;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(127, 69, 50, 0.8);
+}
+.article-content_list li:after,
+.article-content_list li:before {
+  content: "";
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.article-content_list li:before {
+  top: 0.7rem;
+  left: 0.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid rgba(127, 69, 50, 0.5);
+}
+.article-content_list li:after {
+  top: 1.2rem;
+  left: 0.9rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: rgba(127, 69, 50, 0.9);
+  -webkit-transform: rotate(60deg);
+  -moz-transform: rotate(60deg);
+  -o-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg);
+}
+.article-content_list li a {
+  text-decoration: none;
+  color: #444444;
+}
+
 /* 質問リスト
   参考
   https://www.yuu-diaryblog.com/2017/03/14/list-design/
