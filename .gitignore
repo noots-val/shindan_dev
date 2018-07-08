@@ -2,3 +2,10 @@ db.sqlite3
 shindan/settings.py
 *.pyc
 .idea/
+media/
+static/admin/
+static/debug_toolbar/
+common/migrations/
+sixteen/migrations/
+syachikuru/migrations/
+static/import_export/
