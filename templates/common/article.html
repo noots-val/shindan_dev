@@ -23,32 +23,17 @@
 {% endblock %}
 
 {% block contents %}
+<article>
 
-<h1 class="h1_label">{{ article.title }}</h1>
-{% include 'common/ads2.html' %}
+    <h1 class="h1_label">{{ article.title }}</h1>
+    {% include 'common/ads2.html' %}
 
-{% autoescape off %}
-{{ article.content|linebreaks }}
-{% endautoescape %}
-<h2 class="h2_label">この記事を共有する</h2>
-Twitter：
-<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
-    Tweet
-</a>
-<br>
-<br>
-Facebook：
-<div class="fb-share-button" data-href="https://shindan-shitandan.com" data-layout="button" data-size="small"
-     data-mobile-iframe="true">
-    <a target="_blank"
-       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshindan-shitandan.com%2F&amp;src=sdkpreparse"
-       class="fb-xfbml-parse-ignore">シェア</a>
-</div>
-<br>
-<br>
-LINE：
-<div class="line-it-button" data-lang="ja" data-type="like" data-url="https://shindan-shitandan.com/"
-     style="display: none;"></div>
+    {% autoescape off %}
+    {{ article.content|linebreaks }}
+    {% endautoescape %}
+
+</article>
+
 {% endblock %}
 
 {% block js %}
