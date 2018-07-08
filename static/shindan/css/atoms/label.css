@@ -19,6 +19,20 @@
   line-height: 2.4rem;
 }
 
+
+ .most-emphasize_label {
+  font-weight: bold;
+  color: #ff0000;
+ }
+ .middle-emphasize_label {
+  font-weight: bold;
+  background-color: #ffff00;
+ }
+ .little-emphasize_label {
+  font-weight: bold;
+ }
+
+
 /* --------------------- 見出し --------------------- */
 .h1_label {
   margin-bottom: 3rem; 
