@@ -1,18 +1,5 @@
 from import_export.admin import ImportExportModelAdmin
 
-from .models import Type
-from .models import Function
-from .models import Group
-from .models import TypeFunction
-from .models import TypeGroup
-from .models import Anime
-from .models import Question
-from .models import Choice
-from .models import Answer
-from .models import AnimalResult
-from .models import PokemonResult
-from .models import Pokemon
-from .models import RpgResult
 from django.contrib import admin
 
 
