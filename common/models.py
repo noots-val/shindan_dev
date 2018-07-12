@@ -22,8 +22,14 @@ class App(models.Model):
 class Article(models.Model):
     category = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    header = models.TextField(null=True)
+    content1 = models.TextField(null=True)
+    content2 = models.TextField(null=True)
+    content3 = models.TextField(null=True)
+    img1 = models.ImageField(upload_to='images/', null=True, blank=True)
+    img2 = models.ImageField(upload_to='images/', null=True, blank=True)
     status = models.CharField(max_length=255)
+    order = models.IntegerField(default=999)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 

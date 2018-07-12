@@ -26,10 +26,36 @@
 <article>
 
     <h1 class="h1_label">{{ article.title }}</h1>
+
+    {% autoescape off %}
+    {{ article.header | linebreaks }}
+    {% endautoescape %}
+
     {% include 'common/ads2.html' %}
 
     {% autoescape off %}
-    {{ article.content|linebreaks }}
+    {{ article.content1 | linebreaks }}
+    {% endautoescape %}
+
+    {% if article.img1 %}
+    <img class="article-img_dm" src="{{ article.img1.url }}"/>
+    {% endif %}
+
+    {% include 'common/ads2.html' %}
+
+    {% autoescape off %}
+    {{ article.content2 | linebreaks }}
+    {% endautoescape %}
+
+
+    {% if article.img2 %}
+    <img class="article-img_dm" src="{{ article.img2.url }}"/>
+    {% endif %}
+
+    {% include 'common/ads3.html' %}
+
+    {% autoescape off %}
+    {{ article.content3 | linebreaks }}
     {% endautoescape %}
 
 </article>

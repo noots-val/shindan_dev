@@ -40,3 +40,10 @@ p {
 .h3_label {
   margin-top: 3rem;
 }
+
+.article-img_dm {
+  display: block;
+  margin: 2rem auto;
+  max-width: 500px;
+  max-height: 500px;
+}
