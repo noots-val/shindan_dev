@@ -41,8 +41,6 @@
     <img class="article-img_dm" src="{{ article.img1.url }}"/>
     {% endif %}
 
-    {% include 'common/ads2.html' %}
-
     {% autoescape off %}
     {{ article.content2 | linebreaks }}
     {% endautoescape %}
@@ -51,8 +49,6 @@
     {% if article.img2 %}
     <img class="article-img_dm" src="{{ article.img2.url }}"/>
     {% endif %}
-
-    {% include 'common/ads3.html' %}
 
     {% autoescape off %}
     {{ article.content3 | linebreaks }}
