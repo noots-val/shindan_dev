@@ -1,7 +1,11 @@
 from django.http import HttpResponseRedirect, HttpResponse
-from .models import Question, Choice, Result, Characteristic
+from .models import Question, Result, Characteristic
+from .services import CreateQuestionListService, CalculatePointService
+from .values import ResultTypeValue
 from django.views.generic import ListView, DetailView
 from django.urls import reverse
+
+import logging
 
 
 class QuestionsView(ListView):
@@ -12,73 +16,26 @@ class QuestionsView(ListView):
     template_name = 'syachikuru/questions.html'
 
     def get_context_data(self, **kwargs):
-        """
-        QuestionテーブルとChoiceテーブルによって、実際に表示するためのリストを作成する
-        :return: context
-        """
         context = super().get_context_data(**kwargs)
-        questions = Question.objects.all()
-        choices = Choice.objects.all()
-
-        display_question_list = []
-        for question in questions:
-            choices_of_question = [choice for choice in choices if choice.question.pk == question.pk]
-
-            question_dict = {"question_id": question.pk,
-                             "question_sentence": question.question_sentence,
-                             "choices_of_question": choices_of_question}
-            display_question_list.append(question_dict)
-
-        context["display_question_list"] = display_question_list
+        context["display_question_list"] = CreateQuestionListService().create_question_list()
         return context
 
 
 def answer(request):
-    if request.POST is not None:
-        characteristics = Question.objects.values_list('characteristic', flat=True)  # 各質問文のタイプ分けid
-        characteristic_types = Characteristic.objects.values_list('characteristic_type', flat=True)  # 各タイプ（5種類）
-
-        # 各質問文に対応した点数のリストanswersを作成
-        answers = []
-        for characteristic in range(len(characteristics)):    # POSTデータの取得と得点への変換
-            radio_value = int(request.POST["radio" + str(characteristic + 1)])
-            point_value = 5 - ((radio_value - 1) % 5)  # point_valueは実際の得点の値:1～5
-            answers.append(point_value)
-
-        # 各タイプの得点characteristic_type_pointsを計算
-        characteristic_type_points = [0 for i in range(len(characteristic_types))]  # リストの初期化
-        for answer in range(len(characteristics)):
-            for characteristic_type in range(len(characteristic_types)):
-                if characteristics[answer] == characteristic_type + 1:
-                    characteristic_type_points[characteristic_type] += answers[answer]
-                    break
-
-        # 合計点数ごとにresult_idを選択
-        sum_point = sum(characteristic_type_points)
-        if sum_point > 75:
-            result_id = 1
-        elif sum_point > 50:
-            result_id = 2
-        elif sum_point > 25:
-            result_id = 3
-        else:
-            result_id = 4
-
-        response = HttpResponseRedirect(reverse('syachikuru:result', kwargs={'pk': result_id}))
-        response.set_cookie('PEACOCKERY', characteristic_type_points[0])
-        response.set_cookie('LOYALTIES', characteristic_type_points[1])
-        response.set_cookie('ADMISSIBILITY', characteristic_type_points[2])
-        response.set_cookie('RESPONSIBILITY', characteristic_type_points[3])
-        response.set_cookie('COOPERATIVENESS', characteristic_type_points[4])
-    else:
-        return HttpResponseRedirect(reverse('syachikuru:questions'))
+    point_dict = CalculatePointService().sum_point(request)
+    result_id = ResultTypeValue().sort_result_id_by_point(sum(point_dict.values()))
+    request.session['point_dict'] = point_dict
+    return HttpResponseRedirect(reverse('syachikuru:result', args=(result_id,)))
 
 
 class ResultView(DetailView):
     model = Result
     template_name = 'syachikuru/result.html'
 
-    def draw_fig(request):
+    def get_context_data(self, **kwargs):
+        logging.debug(self.request.session['point_dict'])
+
+    def draw_fig(self, request):
         from math import pi
         import matplotlib.pyplot as plt
         from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
@@ -87,11 +44,12 @@ class ResultView(DetailView):
 
         characteristic_types = Characteristic.objects.values_list('characteristic_type', flat=True)
         characteristic_type_points = []
-        characteristic_type_points[0] = request.COOKIES['PEACOCKERY']
-        characteristic_type_points[1] = request.COOKIES['LOYALTIES']
-        characteristic_type_points[2] = request.COOKIES['ADMISSIBILITY']
-        characteristic_type_points[3] = request.COOKIES['RESPONSIBILITY']
-        characteristic_type_points[4] = request.COOKIES['COOPERATIVENESS']
+        characteristic_type_points[0] = request.session['peacockery_point']
+        characteristic_type_points[1] = request.session['loyalties_point']
+        characteristic_type_points[2] = request.session['admissibility_point']
+        characteristic_type_points[3] = request.session['responsibility_point']
+        characteristic_type_points[4] = request.session['cooperativeness_point']
+        logging.debug(characteristic_type_points)
 
         # 軸の作成と設定
         N = len(characteristic_types)  # 軸数の決定
