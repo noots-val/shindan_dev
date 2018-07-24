@@ -46,47 +46,47 @@ class ResultView(DetailView):
         characteristic_type_points = []
 
         # 軸の作成と設定
-        number_of_ax = len(characteristic_types)  # 軸数の決定
-        angle_of_ax = [2 * pi * n / float(number_of_ax) for n in range(number_of_ax)]  # 各軸の角度を計算し値を代入（下2行も併せて）
+        number_of_axis = len(characteristic_types)  # 軸数の決定
+        angle_of_axis = [2 * pi * n / float(number_of_axis) for n in range(number_of_axis)]  # 各軸の角度を計算し値を代入（下2行も併せて）
         characteristic_type_points += characteristic_type_points[:1]
-        angle_of_ax += angle_of_ax[:1]
+        angle_of_axis += angle_of_axis[:1]
 
-        plt.rc('axes', linewidth=0.5, edgecolor="#888888")  # 軸の位置とカラー
+        plt.rc('axes', linewidth=0.5, edgecolor="#888888")  # 軸の位置とカラーの調整
         # ax = plt.figure().add_axes([0.1, 0.1, 0.8, 0.8], polar=True)
-        fig = plt.figure(1, figsize=(5, 5))
-        ax = fig.add_subplot(111, polar=True)
-        ax.set_theta_offset(pi / 2)  # 0点を上側に設定
-        ax.set_theta_direction(-1)  # 基本は反時計回りなので、時計回りに変更
-        ax.set_rlabel_position(0)  # 軸の値をどこに定めるか（今回なら上側）
-        ax.xaxis.grid(True, color="#888888", linestyle='solid', linewidth=0.5)
-        ax.yaxis.grid(False, color="#888888", linestyle='solid', linewidth=0.5)
-        plt.xticks(angle_of_ax[:-1], [])  # 「何度」の表示を消すため（x軸の値（動径方向））
+        characteristic_types_chart = plt.figure(1, figsize=(5, 5))
+        axis = characteristic_types_chart.add_subplot(111, polar=True)
+        axis.set_theta_offset(pi / 2)  # 0点を上側に設定
+        axis.set_theta_direction(-1)  # 基本は反時計回りなので、時計回りに変更
+        axis.set_rlabel_position(0)  # 軸の値をどこに定めるか（今回なら上側）
+        axis.xaxis.grid(True, color="#888888", linestyle='solid', linewidth=0.5)
+        axis.yaxis.grid(False, color="#888888", linestyle='solid', linewidth=0.5)
+        plt.xticks(angle_of_axis[:-1], [])  # 「何度」の表示を消すため（x軸の値（動径方向））
         plt.yticks([5, 10, 15, 20, 25], ["20%", "40%", "60%", "80%", "100%"])  # 値の範囲設定・・・pointの構造によりけりなのであとで変数で編集
 
         # グラフの見た目の設定
-        ax.plot(angle_of_ax, characteristic_type_points, linewidth=0, linestyle='solid', zorder=1)
-        ax.fill(angle_of_ax, characteristic_type_points, facecolor="#4EE5DA", alpha=1)
+        axis.plot(angle_of_axis, characteristic_type_points, linewidth=0, linestyle='solid', zorder=1)
+        axis.fill(angle_of_axis, characteristic_type_points, facecolor="#4EE5DA", alpha=1)
 
         # 動径方向の範囲設定・・・pointの構造によりけりなのであとで変数で編集
         plt.ylim(0, 25)
 
         # ラベルの位置の設定
-        for i in range(number_of_ax):
-            angle_rad = i / float(number_of_ax) * 2 * pi
+        for i in range(number_of_axis):
+            angle_rad = i / float(number_of_axis) * 2 * pi  # piはπ（mathの関数）
 
             if angle_rad == 0:
-                ha, distance_ax = "center", 3
+                ha, distance_axis = "center", 3
             elif 0 < angle_rad < pi:
-                ha, distance_ax = "left", 2
+                ha, distance_axis = "left", 2
             elif angle_rad == pi:
-                ha, distance_ax = "center", 2
+                ha, distance_axis = "center", 2
             else:
-                ha, distance_ax = "right", 2
+                ha, distance_axis = "right", 2
 
-            ax.text(angle_rad, 25 + distance_ax, characteristic_types[i], size=10,
-                    horizontalalignment=ha, verticalalignment="center")
+            axis.text(angle_rad, 25 + distance_axis, characteristic_types[i], size=10,
+                      horizontalalignment=ha, verticalalignment="center")
 
-        canvas = FigureCanvas(fig)
+        canvas = FigureCanvas(characteristic_types_chart)
         response = HttpResponse(content_type='image/png')
         canvas.print_png(response)
         return response
