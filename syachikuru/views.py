@@ -39,16 +39,16 @@ class ResultView(DetailView):
         logging.debug(self.request.session['point_dict'])
 
     def draw_fig(request):
+        poit_dict = request.request.session['point_dict']
+
         plt.rcParams['font.family'] = 'IPAPGothic'  # 全体のフォントを設定
 
         characteristic_types = Characteristic.objects.values_list('characteristic_type', flat=True)
-        characteristic_types_length = len(characteristic_types)  # タイプの数
-        characteristic_type_points = []
 
         # 軸の作成と設定
         number_of_axis = len(characteristic_types)  # 軸数の決定
         angle_of_axis = [2 * pi * n / float(number_of_axis) for n in range(number_of_axis)]  # 各軸の角度を計算し値を代入（下2行も併せて）
-        characteristic_type_points += characteristic_type_points[:1]
+        poit_dict += poit_dict[:1]
         angle_of_axis += angle_of_axis[:1]
 
         plt.rc('axes', linewidth=0.5, edgecolor="#888888")  # 軸の位置とカラーの調整
@@ -64,8 +64,8 @@ class ResultView(DetailView):
         plt.yticks([5, 10, 15, 20, 25], ["20%", "40%", "60%", "80%", "100%"])  # 値の範囲設定・・・pointの構造によりけりなのであとで変数で編集
 
         # グラフの見た目の設定
-        axis.plot(angle_of_axis, characteristic_type_points, linewidth=0, linestyle='solid', zorder=1)
-        axis.fill(angle_of_axis, characteristic_type_points, facecolor="#4EE5DA", alpha=1)
+        axis.plot(angle_of_axis, poit_dict, linewidth=0, linestyle='solid', zorder=1)
+        axis.fill(angle_of_axis, poit_dict, facecolor="#4EE5DA", alpha=1)
 
         # 動径方向の範囲設定・・・pointの構造によりけりなのであとで変数で編集
         plt.ylim(0, 25)
