@@ -21,4 +21,11 @@
 {% block contents %}
 結果画面
 {{display_list}}
+<canvas id="chart" width="70" height="40"></canvas>
+{% endblock %}
+
+{% block js %}
+<head lang="ja"></head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="{% static 'syachikuru/js/drawchart.js'%}"></script>
 {% endblock %}
