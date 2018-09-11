@@ -1,13 +1,13 @@
 // cookieデータの取得
 function GetCookie(cookieName) {
-  var result = null;
-  var indexOfName = cookieName + '=';
-  var AllCookie = document.cookie;
+  let result = null;
+  const indexOfName = cookieName + '=';
+  let AllCookie = document.cookie;
 
-  var position = AllCookie.indexOf(indexOfName);
+  let position = AllCookie.indexOf(indexOfName);
   if (position != -1) {
-    var startIndex = position + indexOfName.length;
-    var endIndex = AllCookie.indexOf(';', startIndex);
+    const startIndex = position + indexOfName.length;
+    let endIndex = AllCookie.indexOf(';', startIndex);
     if (endIndex == -1) {
       endIndex = AllCookie.length;
     }
@@ -30,8 +30,8 @@ const loyaltiesPoint = GetCookie('LOYALTIES_POINT');
 const admissibilityPoint = GetCookie('ADMISSIBILITY_POINT');
 const responsibilityPoint = GetCookie('RESPONSIBILITY_POINT');
 const cooperativenessPoint = GetCookie('COOPERATIVENESS_POINT');
-var ctx = document.getElementById('chart').getContext('2d');
-var myChart = new Chart(ctx, {
+const ctx = document.getElementById('chart').getContext('2d');
+const myChart = new Chart(ctx, {
   type: 'radar',
   options: {
     legend: { //凡例の削除

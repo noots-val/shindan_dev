@@ -35,11 +35,16 @@ def answer(request):
     response.set_cookie('ADMISSIBILITY_POINT', point_dict['admissibility_point'])
     response.set_cookie('RESPONSIBILITY_POINT', point_dict['responsibility_point'])
     response.set_cookie('COOPERATIVENESS_POINT', point_dict['cooperativeness_point'])
-    response.set_cookie('PEACOCKERY_TYPE', characteristic_types[0])
-    response.set_cookie('LOYALTIES_TYPE', characteristic_types[1])
-    response.set_cookie('ADMISSIBILITY_TYPE', characteristic_types[2])
-    response.set_cookie('RESPONSIBILITY_TYPE', characteristic_types[3])
-    response.set_cookie('COOPERATIVENESS_TYPE', characteristic_types[4])
+    response.set_cookie('PEACOCKERY_TYPE', 'a')
+    response.set_cookie('LOYALTIES_TYPE', 'b')
+    response.set_cookie('ADMISSIBILITY_TYPE', 'c')
+    response.set_cookie('RESPONSIBILITY_TYPE', 'd')
+    response.set_cookie('COOPERATIVENESS_TYPE', 'e')
+    # response.set_cookie('PEACOCKERY_TYPE', characteristic_types[0])
+    # response.set_cookie('LOYALTIES_TYPE', characteristic_types[1])
+    # response.set_cookie('ADMISSIBILITY_TYPE', characteristic_types[2])
+    # response.set_cookie('RESPONSIBILITY_TYPE', characteristic_types[3])
+    # response.set_cookie('COOPERATIVENESS_TYPE', characteristic_types[4])
     return response
 
 
