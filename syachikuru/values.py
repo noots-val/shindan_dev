@@ -48,10 +48,10 @@ class ResultTypeValue:
     BUSH_CRICKET = 4
 
     def __init__(self):
-        self.ant_border = 75
-        self.tortoise_border = 50
-        self.rabbit_border = 25
-        self.bush_cricket_border = 0  # 使わないが一応定義
+        self.ant_border = 100
+        self.tortoise_border = 75
+        self.rabbit_border = 50
+        self.bush_cricket_border = 25  # 使わないが一応定義
 
     def sort_result_id_by_point(self, sum_point):
         """

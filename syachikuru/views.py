@@ -4,10 +4,7 @@ from .services import CreateQuestionListService, CalculatePointService
 from .values import ResultTypeValue
 from django.views.generic import ListView, DetailView
 from django.urls import reverse
-# from math import pi
-# import matplotlib.pyplot as plt
-# from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-
+from urllib.parse import quote
 import logging
 
 
@@ -27,6 +24,7 @@ class QuestionsView(ListView):
 def answer(request):
     point_dict = CalculatePointService().sum_point(request)
     result_id = ResultTypeValue().sort_result_id_by_point(sum(point_dict.values()))
+    result_type = Result.objects.values_list('type', flat=True)
     characteristic_types = Characteristic.objects.values_list('characteristic_type', flat=True)
 
     response = HttpResponseRedirect(reverse('syachikuru:result', kwargs={'pk': result_id}))
@@ -35,16 +33,17 @@ def answer(request):
     response.set_cookie('ADMISSIBILITY_POINT', point_dict['admissibility_point'])
     response.set_cookie('RESPONSIBILITY_POINT', point_dict['responsibility_point'])
     response.set_cookie('COOPERATIVENESS_POINT', point_dict['cooperativeness_point'])
-    response.set_cookie('PEACOCKERY_TYPE', 'a')
-    response.set_cookie('LOYALTIES_TYPE', 'b')
-    response.set_cookie('ADMISSIBILITY_TYPE', 'c')
-    response.set_cookie('RESPONSIBILITY_TYPE', 'd')
-    response.set_cookie('COOPERATIVENESS_TYPE', 'e')
-    # response.set_cookie('PEACOCKERY_TYPE', characteristic_types[0])
-    # response.set_cookie('LOYALTIES_TYPE', characteristic_types[1])
-    # response.set_cookie('ADMISSIBILITY_TYPE', characteristic_types[2])
-    # response.set_cookie('RESPONSIBILITY_TYPE', characteristic_types[3])
-    # response.set_cookie('COOPERATIVENESS_TYPE', characteristic_types[4])
+    response.set_cookie('PEACOCKERY_TYPE', quote(characteristic_types[0]))
+    response.set_cookie('LOYALTIES_TYPE', quote(characteristic_types[1]))
+    response.set_cookie('ADMISSIBILITY_TYPE', quote(characteristic_types[2]))
+    response.set_cookie('RESPONSIBILITY_TYPE', quote(characteristic_types[3]))
+    response.set_cookie('COOPERATIVENESS_TYPE', quote(characteristic_types[4]))
+    response.set_cookie('RESULT_TYPE', quote(result_type[result_id-1]))
+    # response.set_cookie('PEACOCKERY_TYPE', 'a')
+    # response.set_cookie('LOYALTIES_TYPE', 'b')
+    # response.set_cookie('ADMISSIBILITY_TYPE', 'c')
+    # response.set_cookie('RESPONSIBILITY_TYPE', 'd')
+    # response.set_cookie('COOPERATIVENESS_TYPE', 'e')
     return response
 
 

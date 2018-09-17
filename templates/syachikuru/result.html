@@ -20,9 +20,29 @@
 
 {% block contents %}
 結果画面
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'syachikuru/css/result.css'%}" type="text/css">
+</head>
+<p>あなたは<br>
+<head>
+    <meta charset="utf-8">
+    <span class="sentence1">
+        <script type="text/javascript" src="{% static 'syachikuru/js/result.js'%}"></script>
+    </span>
+    </head>
+　　<body>
+        <span class="sentence1">型社畜</span><br> 
+        <p class="sentence2">です</p>
+
+ 　　</body>
+</p> 
+</html>
 {{display_list}}
 <canvas id="chart" width="70" height="40"></canvas>
 {% endblock %}
+
+
 
 {% block js %}
 <head lang="ja"></head>
