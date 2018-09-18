@@ -24,20 +24,6 @@
   color: #444444;
 }
 
-/* --------------------- 広告 --------------------- */
-.ads_box {
-  height: 300px;
-}
-.ads_box p {
-  width: 100%;
-}
-.ads_box img {
-  box-sizing: border-box;
-  padding-top: 1rem;
-  max-width: 100%;
-  max-height: 100%;
-}
-
 /* --------------------- プロフィールフォーム --------------------- */
 .profile-form_box {
   box-sizing: border-box;
