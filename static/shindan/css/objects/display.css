@@ -8,18 +8,6 @@
   margin: 4rem 0;
 }
 
-/* --------------------- 広告一覧 --------------------- */
-.ads_display {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 5rem;
-}
-.ads_display img {
-  display: block;
-  margin: 0 auto;
-  margin-top: 2rem;
-}
-
 /* --------------------- 16タイプ一覧 --------------------- */
 .sixteen-type_display {
   display: grid;
