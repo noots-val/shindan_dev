@@ -26,26 +26,41 @@
 </head>
 <p>あなたは<br>
 <head>
-    <meta charset="utf-8">
     <span class="sentence1">
         <script type="text/javascript" src="{% static 'syachikuru/js/result.js'%}"></script>
+        型社畜
     </span>
-    </head>
-　　<body>
-        <span class="sentence1">型社畜</span><br> 
-        <p class="sentence2">です</p>
-
- 　　</body>
+</head>
+<body>
+    <p class="right">です</p>
+</body>
 </p> 
 </html>
 {{display_list}}
 <canvas id="chart" width="70" height="40"></canvas>
-{% endblock %}
 
+Twitter：
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
+        Tweet
+    </a>
+    <br>
+    <br>
+Facebook：
+    <div class="fb-share-button" data-href="https://shindan-shitandan.com" data-layout="button" data-size="small" data-mobile-iframe="true">
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshindan-shitandan.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a>
+    </div>
+    <br>
+    <br>
+LINE：
+    <div class="line-it-button" data-lang="ja" data-type="like" data-url="https://shindan-shitandan.com/" style="display: none;"></div>
+<p><a href="{% url 'syachikuru:questions' %}">質問画面へ</a></p>
+{% endblock %}
 
 
 {% block js %}
 <head lang="ja"></head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="{% static 'syachikuru/js/drawchart.js'%}"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 {% endblock %}

@@ -1,2 +1,19 @@
-span.sentence1 {font-size: 32px; }
-p.sentence2{margin-left: auto; }
+span.sentence1 {font-size: 40px; }
+span.sentence2 {width: 200px; font-size: 40px; margin-left: auto; margin-right: auto;}
+p {
+    width: 200px;
+    font-size: 16px;
+}
+.left {
+    margin-right: auto;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.right {
+    margin-left: auto;
+}
+script {
+    white-space: nowrap;
+}

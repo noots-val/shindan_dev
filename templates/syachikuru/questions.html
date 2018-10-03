@@ -31,7 +31,7 @@
                 {% for choice_of_question in display_question.choices_of_question %}
                 <input type="radio" class="radio-input_form"
                        id="choice{{ display_question.question_id }}-{{ forloop.counter }}"
-                       name="radio{{ display_question.question_id }}" value="{{ choice_of_question.id }}">
+                       name="radio{{ display_question.question_id }}" value="{{ choice_of_question.id }}" checked>
                 <label class="radio-label_form" for="choice{{ display_question.question_id }}-{{ forloop.counter }}">{{choice_of_question.choice_sentence}}</label>
                 {% endfor %}
             </li>
